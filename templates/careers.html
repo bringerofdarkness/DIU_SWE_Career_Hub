@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Job Vacancies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Job Vacancies</h1>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Job Title</th>
+                <th>Description</th>
+                <th>Requirements</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job[1] }}</td>
+                <td>{{ job[2] }}</td>
+                <td>{{ job[3] }}</td>
+                <td>BDT {{ job[4] }}</td>
+                <td><a href="/apply/{{ job[0] }}" class="button">Apply Now</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="card">
+            <h2><a href="/chatbot">Chatbot Help</a></h2>
+            <p>Get assistance from our AI-powered chatbot for application details.</p>
+        </div>
+        <a href="{{ url_for('home') }}" class="button">Back to Homepage</a>
+    </div>
+</body>
+
+</html>
